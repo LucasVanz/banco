@@ -11,11 +11,10 @@ public class CriarNovaConta {
     }
 
     public Conta execute(Conta conta) throws Exception{
-        if (contaGateway.buscarCpf(conta.getCpf()) != null){
-            throw new Exception("usuário já possui conta");
+        if (contaGateway.buscarCpf(conta.getCliente().getCpf()) != null){
+            throw new Exception("Usuário já possui conta");
+        }else {
+            return conta;
         }
-
-        return contaGateway.salvar(conta);
-
     }
 }
