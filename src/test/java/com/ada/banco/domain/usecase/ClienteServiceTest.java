@@ -36,7 +36,6 @@ public class ClienteServiceTest {
 
     @Test
     void listarTodosDeveRetornarListaDeClientesQuandoHouverClientes() {
-        // Simule a resposta do repositório
         Cliente cliente = new Cliente(1L, "Nome", "12345678901");
         when(clienteRepository.findAll()).thenReturn(Collections.singletonList(cliente));
 
@@ -48,7 +47,6 @@ public class ClienteServiceTest {
 
     @Test
     void buscarPorCpfDeveRetornarClienteQuandoExistir() {
-        // Simule a resposta do repositório
         Cliente cliente = new Cliente(1L, "Nome", "12345678901");
         when(clienteRepository.findByCpf("12345678901")).thenReturn(cliente);
 
@@ -60,7 +58,6 @@ public class ClienteServiceTest {
 
     @Test
     void buscarPorCpfDeveLancarExcecaoQuandoNaoExistirCliente() {
-        // Simule a resposta do repositório
         when(clienteRepository.findByCpf("12345678901")).thenReturn(null);
 
         assertThrows(RuntimeException.class, () -> clienteService.buscarPorCpf("12345678901"));
@@ -69,7 +66,6 @@ public class ClienteServiceTest {
 
     @Test
     void salvarDeveLancarExcecaoQuandoExistirClienteComMesmoCpf() {
-        // Simule a resposta do repositório
         when(clienteRepository.findByCpf("12345678901")).thenReturn(new Cliente());
 
         Cliente cliente = new Cliente(1L, "Nome", "12345678901");
@@ -79,7 +75,6 @@ public class ClienteServiceTest {
 
     @Test
     void excluirDeveLancarExcecaoQuandoNaoExistirCliente() {
-        // Simule a resposta do repositório
         when(clienteRepository.findByCpf("12345678901")).thenReturn(null);
 
         assertThrows(RuntimeException.class, () -> clienteService.excluir("12345678901"));
@@ -87,7 +82,6 @@ public class ClienteServiceTest {
 
     @Test
     void excluirDeveChamarMetodoDeleteByCpfDoRepositorioQuandoExistirCliente() {
-        // Simule a resposta do repositório
         when(clienteRepository.findByCpf("12345678901")).thenReturn(new Cliente());
 
         clienteService.excluir("12345678901");
