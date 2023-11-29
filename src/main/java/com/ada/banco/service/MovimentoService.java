@@ -31,17 +31,20 @@ public class MovimentoService {
             throw new RuntimeException("Quantia de saque maior que o saldo da conta");
         }
         conta.setSaldo(conta.getSaldo().subtract(saque.getQuantiaSaque()));
+        contaRepository.save(conta);
         return saque;
     }
 
     public Transferencia transferencia(Transferencia transferencia){
         Conta contaDestino = contaRepository.findByCliente_Cpf(transferencia.getCpfDestino());
-        Conta contaOrigem = contaRepository.findByCliente_Cpf(transferencia.getCpfDestino());
+        Conta contaOrigem = contaRepository.findByCliente_Cpf(transferencia.getCpfOrigem());
         if(contaOrigem.getSaldo().compareTo(transferencia.getQuantiaTransferencia()) <= 0){
             throw new RuntimeException("Quantia inválida para transferência");
         }
         contaDestino.setSaldo(contaDestino.getSaldo().add(transferencia.getQuantiaTransferencia()));
         contaOrigem.setSaldo(contaOrigem.getSaldo().subtract(transferencia.getQuantiaTransferencia()));
+        contaRepository.save(contaDestino);
+        contaRepository.save(contaOrigem);
         return transferencia;
     }
 }
