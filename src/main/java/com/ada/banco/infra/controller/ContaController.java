@@ -1,16 +1,13 @@
 package com.ada.banco.infra.controller;
 
-import com.ada.banco.domain.model.Cliente;
 import com.ada.banco.domain.model.Conta;
 import com.ada.banco.domain.model.DadosCadastroConta;
 import com.ada.banco.service.ClienteService;
 import com.ada.banco.service.ContaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController

@@ -1,6 +1,5 @@
 package com.ada.banco.infra.controller;
 
-import com.ada.banco.domain.model.Conta;
 import com.ada.banco.domain.model.Deposito;
 import com.ada.banco.domain.model.Saque;
 import com.ada.banco.domain.model.Transferencia;
